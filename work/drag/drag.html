@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>九宫格拖拽</title>
+<style>
+*{margin:0; padding:0; text-decoration:none; list-style:none;}
+body{background:#000;}
+.box {width:100%; font-family:"微软雅黑";}
+/*导航条*/
+.box .navbar{height:68px; background:#2d3640; width:100%; position:fixed; top:0; left:0; z-index:9;}
+.box .nav{width:100%;}
+.navbar .navbar_m{width:100%;; height:68px; margin:0 auto; top:0; left:0; background:#2d3640; z-index:3;}
+.navbar .navbar_m2{width:100%; height:68px; display:none;}
+.navbar .navbar_m ul{width:480px; height:68px;margin-left:25px;  position:relative; overflow:hidden; z-index:1;}
+.navbar ul li{display:block; float:left;  font-size:20px; width:120px; height:58px; margin-top:5px; text-align:center; line-height:58px; position:relative; z-index:2;}
+#block{border:block;position:absolute;background:rgba(153,153,153,0.5);z-index:1;}
+.navbar .nav a{color:#fff;}
+
+.main{height:500px; width:100%; position:relative; margin-top:100px;}
+#drag{width:400px;height:300px; left:200px; top:100px; background:#ccc; position:absolute; margin:0 auto;}
+.rb{width:30px;height:30px; position:absolute; right:0; bottom:0; background:#ccc; z-index:2;}
+.r{width:30px;height:100%; position:absolute; right:0; bottom:0; background:#666;}
+.b{width:100%;height:30px; position:absolute; right:0; bottom:0; background:#666;}
+.lt{width:30px;height:30px; position:absolute; left:0; top:0; background:#ccc; z-index:2;}
+.rt{width:30px;height:30px; position:absolute; right:0; top:0; background:#ccc; z-index:2;}
+.l{width:30px;height:100%; position:absolute; left:0; bottom:0; background:#666;}
+.t{width:100%;height:30px; position:absolute; right:0; top:0; background:#666;}
+.lb{width:30px;height:30px; position:absolute; left:0; bottom:0; background:#ccc; z-index:2;}
+	
+/*联系我*/
+.footer{height:300px; background:#2d3640; margin-top:15px; }
+.footer .row1{height:100px; width:100%; margin:30px auto; color:#fff; line-height:155px;}
+.row1 p{letter-spacing:10px; font-size:36px; height:100px; width:400px; margin:0 auto;}
+.row1 p span{font-size:72px; color:#1aaaf1;}
+.footer .contact{height:200px; background:#3c4755; margin:20px auto;}
+.contact ul{width:480px;height:50px; margin:15px auto; padding-top:20px;}
+.contact ul li{width:100px; height:150px; display:block; float:left;  line-height:50px; text-align:center;}
+.contact ul li span{width:100px; height:100px; display:none; margin-top:60px;}
+
+.QRCode1{background:url(../../img/QRCode0.png) no-repeat;}
+.QRCode2{background:url(../../img/QRCode1.png) no-repeat;}
+.QRCode3{background:url(../../img/QRCode2.png) no-repeat;} 
+
+.contact .contact1{background:url(../../img/ic1.png) no-repeat; background-position:25px 0px;}
+.contact .contact2{background:url(../../img/ic2.png) no-repeat; background-position:25px 0px;}
+.contact .contact3{background:url(../../img/ic3.png) no-repeat; background-position:25px 0px;}
+.contact .contact4{background:url(../../img/ic4.png) no-repeat; background-position:25px 0px;}
+.contact4 a{width:50px; height:50px; display:block;}
+
+</style>
+<script src="../../js/move.js"></script>
+<script src="../../js/com.js"></script>
+
+<script>
+	;(function(){
+		addReady(function(){
+			var oDrag = document.getElementById('drag');	
+			var aSpan = oDrag.children;
+			for(var i = 0;i<aSpan.length;i++){
+				drag(aSpan[i]);
+			}
+			
+			function drag(obj){
+				//按下 
+				addEvent(obj,'mousedown',function(ev){
+						var oEvent = ev||event;
+						//宽oldW oldX 位置 oldL  oDrag.offsetLeft
+						var oldW = oDrag.offsetWidth;
+						var oldX = oEvent.clientX;
+						var oldL = oDrag.offsetLeft;
+						//存竖直方向
+						var oldH = oDrag.offsetHeight;
+						var oldY = oEvent.clientY;
+						var oldT = oDrag.offsetTop;
+						
+						function DragMove(ev){
+							var oEvent = ev||event;
+							
+							//l
+							if(obj.className.indexOf('l')!=-1){
+								oDrag.style.width = oldW -(oEvent.clientX - oldX)+'px'; 
+								oDrag.style.left = oldL + (oEvent.clientX - oldX)+'px'; 
+							}
+							//r
+							if(obj.className.indexOf('r')!=-1){
+								oDrag.style.width = oldW + (oEvent.clientX - oldX)+'px';
+							}	
+							//t
+							if(obj.className.indexOf('t')!=-1){
+								oDrag.style.height = oldH -(oEvent.clientY - oldY)+'px'; 
+								oDrag.style.top = oldT + (oEvent.clientY - oldY)+'px'; 
+							}
+							//b
+							if(obj.className.indexOf('b')!=-1){
+								oDrag.style.height = oldH + (oEvent.clientY - oldY)+'px';
+							}
+							//removeEvent(document,'mousemove',DragMove);
+						}
+						addEvent(document,'mousemove',DragMove);
+						
+						
+						function DragUp(){
+							oDrag.style.background = 'rgba('+rnd(0,256)+','+rnd(0,256)+','+rnd(0,256)+',1)';
+							document.onmouseup = null;
+							document.onmousemove = null;
+							//removeEvent(document,'mouseup',DragUp);
+							removeEvent(document,'mousemove',DragMove);
+						}
+						addEvent(document,'mouseup',DragUp);
+						return false;	
+					//};
+				});
+			}
+		});
+	})();
+</script>
+
+</head>
+<body>
+	<div class="box">
+		<div class="navbar" id="navbar">
+			<div class="navbar_m">
+				<ul class="nav">
+					<li><a href="../../index.html#home" class="current">首页</a></li>
+					<li><a href="../../index.html#navbar">关于我</a></li>
+					<li><a href="../../index.html#page_footer">作品</a></li>
+					<li><a href="../../index.html#footer">联系我</a></li>
+					<li id="block"></li>
+				</ul>
+			</div>
+			<div class="navbar_m2"></div>
+		</div>
+		
+		<div class="main">
+			<div id="drag">
+				<span class="rb"></span>
+				<span class="r"></span>
+				<span class="b"></span>
+				<span class="lt"></span>
+				<span class="l"></span>
+				<span class="t"></span>
+				<span class="lb"></span>
+				<span class="rt"></span>
+			</div>
+		</div>
+		
+		<div class="footer" id="footer">
+			<div class="row1">
+				<p><span>C</span>ONTACT ME</p>
+			</div>
+			<div class="contact">
+				<ul id="con">
+					<li class="contact1">
+						<span class="QRCode1"></span>
+					</li>
+					<li class="contact2">
+						<span class="QRCode2"></span>
+					</li>
+					<li class="contact3">
+						<span class="QRCode3"></span>
+					</li>
+					<li class="contact4"><a href="javascript:;"></a></li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
+
+
+
+
+
+

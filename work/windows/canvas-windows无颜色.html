@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>window屏保</title>
+<style>
+	*{margin:0;padding:0;}
+	html,body{height:100%; overflow:hidden;}
+	canvas{background:#000;}
+</style>
+<script>
+	function rnd(m,n){
+		return Math.floor(Math.random()*(n-m)+m);
+	}
+	window.onload = function(){
+		var oC = document.getElementById('c1');
+		var gd = oC.getContext('2d');
+		oC.width = document.documentElement.clientWidth;
+		oC.height = document.documentElement.clientHeight;
+		
+		//生成5个点位置随机
+		var N = 7;
+		var aPoint = [];
+		var Len = 17;
+		var oldPoint = [];
+		for(var i = 0;i<N;i++){
+			aPoint.push({
+				x:rnd(0,oC.width),
+				y:rnd(0,oC.height),
+				iSpeedX:rnd(-10,10),
+				iSpeedY:rnd(-10,10)
+			});
+		}
+		//运动画图
+		setInterval(function(){
+			//清除
+			gd.clearRect(0,0,oC.width,oC.height);
+			//运动
+			for(var i = 0 ;i<N;i++){
+				aPoint[i].x+=aPoint[i].iSpeedX;
+				aPoint[i].y+=aPoint[i].iSpeedY;
+				//判断是否到边，做碰撞
+				if(aPoint[i].x<0){
+					aPoint[i].x = 0;
+					aPoint[i].iSpeedX*=-1;
+				}
+				if(aPoint[i].x>oC.width){
+					aPoint[i].x = oC.width;
+					aPoint[i].iSpeedX*=-1;
+				}
+				//Y轴判断
+				if(aPoint[i].y<0){
+					aPoint[i].y = 0;
+					aPoint[i].iSpeedY*=-1;
+				}
+				if(aPoint[i].y>oC.height){
+					aPoint[i].y = oC.height;
+					aPoint[i].iSpeedY*=-1;
+				}
+				
+			}
+			//画点
+			for(var i = 0;i<N;i++){
+				drawPoint(aPoint[i]);
+			}
+			
+			//连线
+			gd.moveTo(aPoint[0].x,aPoint[0].y);
+			for(var i = 0;i<N;i++){
+				gd.lineTo(aPoint[i].x,aPoint[i].y);
+			}
+			gd.closePath();
+			gd.strokeStyle = '#fff';
+			gd.stroke();
+			
+			//删除多余的点
+			var arr = [];
+			for(var i = 0;i<N;i++){
+				arr.push({
+					x:aPoint[i].x,
+					y:aPoint[i].y,
+					iSpeedX:aPoint[i].iSpeedX,
+					iSpeedY:aPoint[i].iSpeedY
+				});
+			}
+			oldPoint.push(arr);
+			if(oldPoint.length>Len){oldPoint.shift()};
+			//重新连线
+			for(var i =0;i<oldPoint.length;i++){
+				gd.beginPath();
+				gd.moveTo(oldPoint[i].x,oldPoint[i].y);
+				for(var j = 0;j<oldPoint[i].length;j++){
+					gd.lineTo(oldPoint[i][j].x,oldPoint[i][j].y);
+				}
+				gd.closePath();
+				gd.strokeStyle = 'rgba(255,255,255,'+i/Len+')';
+				gd.stroke();
+			}
+			
+			
+			
+			
+		},16);
+		function drawPoint(oPoint){
+			gd.beginPath();
+			gd.fillStyle = '#fff';
+			gd.fillRect(oPoint.x,oPoint.y,1,1);
+		}
+		
+		
+		
+	};
+</script>
+</head>
+
+<body>
+	<canvas id="c1">
+		<strong>
+			您的浏览器版本过低，不支持canvas，请尽快升级您的浏览器。
+		</strong>
+	</canvas>
+</body>
+</html>

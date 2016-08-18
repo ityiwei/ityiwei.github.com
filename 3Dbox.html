@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>3D盒子</title>
+<style>
+*{margin:0; padding:0; text-decoration:none; list-style:none;}
+body{background:#000;}
+.box {width:100%; font-family:"微软雅黑";}
+
+.box .navbar{height:68px; background:#2d3640; width:100%; position:fixed; top:0; left:0;}
+.box .nav{width:100%;}
+.navbar .navbar_m{width:100%;; height:68px; margin:0 auto; top:0; left:0; background:#2d3640; z-index:3;}
+.navbar .navbar_m2{width:100%; height:68px; display:none;}
+.navbar .navbar_m ul{width:480px; height:68px;margin-left:25px;  position:relative; overflow:hidden; z-index:1;}
+.navbar ul li{display:block; float:left;  font-size:20px; width:120px; height:58px; margin-top:5px; text-align:center; line-height:58px; position:relative; z-index:2;}
+#block{border:block;position:absolute;background:rgba(153,153,153,0.5);z-index:1;}
+.navbar .nav a{color:#fff;}
+
+/*3D盒子旋转*/
+.main{width:300px; height:300px; position:relative; margin:200px auto; 
+	-webkit-transition:10s all ease; 
+	-moz-transition:10s all ease; 
+	-ms-transition:10s all ease; 
+	-o-transition:10s all ease; 
+	transition:10s all ease; 
+	-webkit-transform:perspective(800px) rotateX(0deg) rotateY(0deg); 
+	-moz-transform:perspective(800px) rotateX(0deg) rotateY(0deg); 
+	-ms-transform:perspective(800px) rotateX(0deg) rotateY(0deg); 
+	-o-transform:perspective(800px) rotateX(0deg) rotateY(0deg); 
+	transform:perspective(800px) rotateX(0deg) rotateY(0deg); 
+	-webkit-transform-style:preserve-3d;
+	-moz-transform-style:preserve-3d;
+	-ms-transform-style:preserve-3d;
+	-o-transform-style:preserve-3d;
+	transform-style:preserve-3d;
+}
+.main div{width:100%; height:100%; position:absolute; top:0; left:0; font-size:50px; text-align:center; line-height:300px; font-weight:bold; border-radius:50%; box-shadow:inset 0 0 35px #000;}
+.front{
+	background:rgba(153,255,204,0.5); 
+	-webkit-transform: translateZ(150px);
+	-moz-transform: translateZ(150px);
+	-ms-transform: translateZ(150px);
+	-o-transform: translateZ(150px);
+	transform: translateZ(150px);
+}
+.back{
+	background:rgba(51,255,153,0.5);
+	-webkit-transform: translateZ(-150px);
+	-moz-transform: translateZ(-150px);
+	-ms-transform: translateZ(-150px);
+	-o-transform: translateZ(-150px);
+	transform: translateZ(-150px);
+}
+.left{
+	background:rgba(255,255,153,0.5); 
+	-webkit-transform: translate(-150px,0px) rotateY(-90deg);
+	-moz-transform: translate(-150px,0px) rotateY(-90deg);
+	-ms-transform: translate(-150px,0px) rotateY(-90deg);
+	-o-transform: translate(-150px,0px) rotateY(-90deg);
+	transform: translate(-150px,0px) rotateY(-90deg);
+}
+.right{
+	background:rgba(255,153,204,0.5); 
+	-webkit-transform: translate(150px,0px) rotateY(90deg);
+	-moz-transform: translate(150px,0px) rotateY(90deg);
+	-ms-transform: translate(150px,0px) rotateY(90deg);
+	-o-transform: translate(150px,0px) rotateY(90deg);
+	transform: translate(150px,0px) rotateY(90deg);
+}
+.top{
+	background:rgba(255,0,153,0.5);
+	-webkit-transform:translate(0px,-150px) rotateX(90deg);
+	-moz-transform:translate(0px,-150px) rotateX(90deg);
+	-ms-transform:translate(0px,-150px) rotateX(90deg);
+	-o-transform:translate(0px,-150px) rotateX(90deg);
+	transform:translate(0px,-150px) rotateX(90deg);
+}
+.bottom{
+	background:rgba(153,51,153,0.5);
+	-webkit-transform:translate(0px,150px) rotateX(90deg);
+	-moz-transform:translate(0px,150px) rotateX(90deg);
+	-ms-transform:translate(0px,150px) rotateX(90deg);
+	-o-transform:translate(0px,150px) rotateX(90deg);
+	transform:translate(0px,150px) rotateX(90deg);
+}
+.main:active{
+	-webkit-transform:perspective(800px) rotateX(360deg) rotateY(360deg);
+	-moz-transform:perspective(800px) rotateX(360deg) rotateY(360deg);
+	-ms-transform:perspective(800px) rotateX(360deg) rotateY(360deg);
+	-o-transform:perspective(800px) rotateX(360deg) rotateY(360deg);
+	transform:perspective(800px) rotateX(360deg) rotateY(360deg);
+}
+
+/*联系我*/
+.footer{height:300px; background:#2d3640; margin-top:15px; }
+.footer .row1{height:100px; width:100%; margin:30px auto; color:#fff; line-height:155px;}
+.row1 p{letter-spacing:10px; font-size:36px; height:100px; width:400px; margin:0 auto;}
+.row1 p span{font-size:72px; color:#1aaaf1;}
+.footer .contact{height:200px; background:#3c4755; margin:20px auto;}
+.contact ul{width:480px;height:50px; margin:15px auto; padding-top:20px;}
+.contact ul li{width:100px; height:150px; display:block; float:left;  line-height:50px; text-align:center;}
+.contact ul li span{width:100px; height:100px; display:none; margin-top:60px;}
+
+.QRCode1{background:url(img/QRCode0.png) no-repeat;}
+.QRCode2{background:url(img/QRCode1.png) no-repeat;}
+.QRCode3{background:url(img/QRCode2.png) no-repeat;} 
+
+.contact .contact1{background:url(img/ic1.png) no-repeat; background-position:25px 0px;}
+.contact .contact2{background:url(img/ic2.png) no-repeat; background-position:25px 0px;}
+.contact .contact3{background:url(img/ic3.png) no-repeat; background-position:25px 0px;}
+.contact .contact4{background:url(img/ic4.png) no-repeat; background-position:25px 0px;}
+.contact4 a{width:50px; height:50px; display:block;}
+
+</style>
+<script src="js/move.js"></script>
+<script src="js/com.js"></script>
+</head>
+
+<body>
+	<div class="box">
+		<div class="navbar" id="navbar">
+			<div class="navbar_m">
+				<ul class="nav">
+					<li><a href="index.html#home" class="current">首页</a></li>
+					<li><a href="index.html#navbar">关于我</a></li>
+					<li><a href="index.html#page_footer">作品</a></li>
+					<li><a href="index.html#footer">联系我</a></li>
+					<li id="block"></li>
+				</ul>
+			</div>
+			<div class="navbar_m2"></div>
+		</div>
+		
+		<div class="main">
+			<div class="front">正面</div>
+			<div class="back">反面</div>
+			<div class="left">左面</div>
+			<div class="right">右面<</div>
+			<div class="top">上面</div>
+			<div class="bottom">下面</div>
+		</div>
+	
+		<div class="footer" id="footer">
+			<div class="row1">
+				<p><span>C</span>ONTACT ME</p>
+			</div>
+			<div class="contact">
+				<ul id="con">
+					<li class="contact1">
+						<span class="QRCode1"></span>
+					</li>
+					<li class="contact2">
+						<span class="QRCode2"></span>
+					</li>
+					<li class="contact3">
+						<span class="QRCode3"></span>
+					</li>
+					<li class="contact4"><a href="javascript:;"></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
