@@ -1,0 +1,34 @@
+*{margin:0; padding:0; text-decoration:none; list-style:none;}
+body{background:#000;}
+.box {width:100%; font-family:"微软雅黑";}
+/*导航条*/
+.box .navbar{height:68px; background:#2d3640; width:100%; position:fixed; top:0; left:0;}
+.box .nav{width:100%;}
+.navbar .navbar_m{width:100%;; height:68px; margin:0 auto; top:0; left:0; background:#2d3640; z-index:3;}
+.navbar .navbar_m2{width:100%; height:68px; display:none;}
+.navbar .navbar_m ul{width:480px; height:68px;margin-left:25px;  position:relative; overflow:hidden; z-index:1;}
+.navbar ul li{display:block; float:left;  font-size:20px; width:120px; height:58px; margin-top:5px; text-align:center; line-height:58px; position:relative; z-index:2;}
+#block{border:block;position:absolute;background:rgba(153,153,153,0.5);z-index:1;}
+.navbar .nav a{color:#fff;}
+
+
+/*联系我*/
+.footer{height:300px; background:#2d3640; margin-top:15px; }
+.footer .row1{height:100px; width:100%; margin:30px auto; color:#fff; line-height:155px;}
+.row1 p{letter-spacing:10px; font-size:36px; height:100px; width:400px; margin:0 auto;}
+.row1 p span{font-size:72px; color:#1aaaf1;}
+.footer .contact{height:200px; background:#3c4755; margin:20px auto;}
+.contact ul{width:480px;height:50px; margin:15px auto; padding-top:20px;}
+.contact ul li{width:100px; height:150px; display:block; float:left;  line-height:50px; text-align:center;}
+.contact ul li span{width:100px; height:100px; display:none; margin-top:60px;}
+
+.QRCode1{background:url(../img/QRCode0.png) no-repeat;}
+.QRCode2{background:url(../img/QRCode1.png) no-repeat;}
+.QRCode3{background:url(../img/QRCode2.png) no-repeat;} 
+
+.contact .contact1{background:url(../img/ic1.png) no-repeat; background-position:25px 0px;}
+.contact .contact2{background:url(../img/ic2.png) no-repeat; background-position:25px 0px;}
+.contact .contact3{background:url(../img/ic3.png) no-repeat; background-position:25px 0px;}
+.contact .contact4{background:url(../img/ic4.png) no-repeat; background-position:25px 0px;}
+.contact4 a{width:50px; height:50px; display:block;}
+
