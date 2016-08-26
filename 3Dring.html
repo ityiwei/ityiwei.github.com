@@ -7,15 +7,6 @@
 *{margin:0; padding:0; text-decoration:none; list-style:none;}
 body{background:#000;}
 .box {width:100%; font-family:"微软雅黑";}
-
-.box .navbar{height:68px; background:#2d3640; width:100%; position:fixed; top:0; left:0;}
-.box .nav{width:100%;}
-.navbar .navbar_m{width:100%;; height:68px; margin:0 auto; top:0; left:0; background:#2d3640; z-index:3;}
-.navbar .navbar_m2{width:100%; height:68px; display:none;}
-.navbar .navbar_m ul{width:480px; height:68px;margin-left:25px;  position:relative; overflow:hidden; z-index:1;}
-.navbar ul li{display:block; float:left;  font-size:20px; width:120px; height:58px; margin-top:5px; text-align:center; line-height:58px; position:relative; z-index:2;}
-#block{border:block;position:absolute;background:rgba(153,153,153,0.5);z-index:1;}
-.navbar .nav a{color:#fff;}
 /*3D图片环*/
 	.main{height:600px;}
 	.main ul{width:113px; height:200px; position:absolute; top:50%; left:50%; margin-top:-100px; margin-left:-66px;
@@ -37,26 +28,6 @@ body{background:#000;}
 	transform:perspective(450px) rotateY(360deg);
 	}
 
-/*联系我*/
-.footer{height:300px; background:#2d3640; margin-top:15px;}
-.footer .row1{height:100px; width:100%; margin:30px auto; color:#fff; line-height:155px;}
-.row1 p{letter-spacing:10px; font-size:36px; height:100px; width:400px; margin:0 auto;}
-.row1 p span{font-size:72px; color:#1aaaf1;}
-.footer .contact{height:200px; background:#3c4755; margin:20px auto;}
-.contact ul{width:480px;height:50px; margin:15px auto; padding-top:20px;}
-.contact ul li{width:100px; height:150px; display:block; float:left;  line-height:50px; text-align:center;}
-.contact ul li span{width:100px; height:100px; display:none; margin-top:60px;}
-
-.QRCode1{background:url(img/QRCode0.png) no-repeat;}
-.QRCode2{background:url(img/QRCode1.png) no-repeat;}
-.QRCode3{background:url(img/QRCode2.png) no-repeat;} 
-
-.contact .contact1{background:url(img/ic1.png) no-repeat; background-position:25px 0px;}
-.contact .contact2{background:url(img/ic2.png) no-repeat; background-position:25px 0px;}
-.contact .contact3{background:url(img/ic3.png) no-repeat; background-position:25px 0px;}
-.contact .contact4{background:url(img/ic4.png) no-repeat; background-position:25px 0px;}
-.contact4 a{width:50px; height:50px; display:block;}
-
 </style>
 <script src="js/com.js"></script>
 <script src="js/move.js"></script>
@@ -65,19 +36,6 @@ body{background:#000;}
 
 <body>
 	<div class="box">
-		<div class="navbar" id="navbar">
-			<div class="navbar_m">
-				<ul class="nav">
-					<li><a href="index.html#home" class="current">首页</a></li>
-					<li><a href="index.html#navbar">关于我</a></li>
-					<li><a href="index.html#page_footer">作品</a></li>
-					<li><a href="index.html#footer">联系我</a></li>
-					<li id="block"></li>
-				</ul>
-			</div>
-			<div class="navbar_m2"></div>
-		</div>
-		
 		<div class="main">
 			<ul>
 				<li><img src="img2/1.jpg" /></li>
@@ -93,26 +51,6 @@ body{background:#000;}
 				<li><img src="img2/11.jpg" /></li>
 				<li><img src="img2/12.jpg" /></li>
 			</ul>
-		</div>
-	
-		<div class="footer" id="footer">
-			<div class="row1">
-				<p><span>C</span>ONTACT ME</p>
-			</div>
-			<div class="contact">
-				<ul id="con">
-					<li class="contact1">
-						<span class="QRCode1"></span>
-					</li>
-					<li class="contact2">
-						<span class="QRCode2"></span>
-					</li>
-					<li class="contact3">
-						<span class="QRCode3"></span>
-					</li>
-					<li class="contact4"><a href="javascript:;"></a></li>
-				</ul>
-			</div>
 		</div>
 	</div>
 	<script src="js/work2.js"></script>

@@ -45,6 +45,19 @@
 			var oDis = oRow2.offsetWidth-oRow2page.offsetWidth;
 			var oDis2 = oRow2.offsetWidth/2;
 			var bOk = false;
+			/*
+			addEvent(window,'resize',function(){
+				console.log(1)
+					oRow2page.style.left = 0+'px';
+					
+				if(document.documentElement.clientWidth<900||oRow2page.offsetLeft>oDis2){
+					bOk = true;
+					console.log(oRow2page.offsetLeft);
+					oRow2page.style.left = 0+'px';
+				}
+				
+			});
+			*/
 			function meMove(){
 				oRow2page.style.WebkitTransition = '2s all ease-in';
 				oRow2page.style.MozTransition = '2s all ease-in';
@@ -76,7 +89,7 @@
 					bOk = true;
 					meMove();
 				}
-			});			
+			});
 		});
 	})();
 	/*作品展示穿墙效果*/

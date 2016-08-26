@@ -7,16 +7,6 @@
 *{margin:0; padding:0; text-decoration:none; list-style:none;}
 body{background:#000;}
 .box {width:100%; font-family:"微软雅黑";}
-/*导航条*/
-.box .navbar{height:68px; background:#2d3640; width:100%; position:fixed; top:0; left:0;}
-.box .nav{width:100%;}
-.navbar .navbar_m{width:100%;; height:68px; margin:0 auto; top:0; left:0; background:#2d3640; z-index:3;}
-.navbar .navbar_m2{width:100%; height:68px; display:none;}
-.navbar .navbar_m ul{width:480px; height:68px;margin-left:25px;  position:relative; overflow:hidden; z-index:1;}
-.navbar ul li{display:block; float:left;  font-size:20px; width:120px; height:58px; margin-top:5px; text-align:center; line-height:58px; position:relative; z-index:2;}
-#block{border:block;position:absolute;background:rgba(153,153,153,0.5);z-index:1;}
-.navbar .nav a{color:#fff;}
-
 /*时钟*/
 	.main{height:600px;}
 	.clock{ width:300px; height:300px; position:absolute; left:50%; top:50%; margin-left:-150px; margin-top:-150px; border:5px solid #fff; border-radius:50%; box-shadow:0 0 25px #fff;}
@@ -48,73 +38,20 @@ body{background:#000;}
 	.num em{position:absolute; top:15px; left:50%; margin-left:-15px; font-style:normal; width:30px;  text-align:center; font-weight:bold; color:#0F6;}
 	.con{position:absolute; height:20px; width:20px; top:50%; left:50%; margin-left:-10px; margin-top:-10px; background:radial-gradient(#CCC,#F39); border-radius:50%;}
 
-/*联系我*/
-.footer{height:300px; background:#2d3640; margin-top:15px; }
-.footer .row1{height:100px; width:100%; margin:30px auto; color:#fff; line-height:155px;}
-.row1 p{letter-spacing:10px; font-size:36px; height:100px; width:400px; margin:0 auto;}
-.row1 p span{font-size:72px; color:#1aaaf1;}
-.footer .contact{height:200px; background:#3c4755; margin:20px auto;}
-.contact ul{width:480px;height:50px; margin:15px auto; padding-top:20px;}
-.contact ul li{width:100px; height:150px; display:block; float:left;  line-height:50px; text-align:center;}
-.contact ul li span{width:100px; height:100px; display:none; margin-top:60px;}
-
-.QRCode1{background:url(img/QRCode0.png) no-repeat;}
-.QRCode2{background:url(img/QRCode1.png) no-repeat;}
-.QRCode3{background:url(img/QRCode2.png) no-repeat;} 
-
-.contact .contact1{background:url(img/ic1.png) no-repeat; background-position:25px 0px;}
-.contact .contact2{background:url(img/ic2.png) no-repeat; background-position:25px 0px;}
-.contact .contact3{background:url(img/ic3.png) no-repeat; background-position:25px 0px;}
-.contact .contact4{background:url(img/ic4.png) no-repeat; background-position:25px 0px;}
-.contact4 a{width:50px; height:50px; display:block;}
 
 </style>
-<script src="js/move.js"></script>
 <script src="js/com.js"></script>
 <script src="js/clock.js"></script>
 </head>
 
 <body>
 	<div class="box">
-		<div class="navbar" id="navbar">
-			<div class="navbar_m">
-				<ul class="nav">
-					<li><a href="index.html#home" class="current">首页</a></li>
-					<li><a href="index.html#navbar">关于我</a></li>
-					<li><a href="index.html#page_footer">作品</a></li>
-					<li><a href="index.html#footer">联系我</a></li>
-					<li id="block"></li>
-				</ul>
-			</div>
-			<div class="navbar_m2"></div>
-		</div>
-		
 		<div class="main">
 			<div class="clock">
 				<div class="hou"></div>
 				<div class="min"></div>
 				<div class="sec"></div>
 				<div class="con"></div>
-			</div>
-		</div>
-		
-		<div class="footer" id="footer">
-			<div class="row1">
-				<p><span>C</span>ONTACT ME</p>
-			</div>
-			<div class="contact">
-				<ul id="con">
-					<li class="contact1">
-						<span class="QRCode1"></span>
-					</li>
-					<li class="contact2">
-						<span class="QRCode2"></span>
-					</li>
-					<li class="contact3">
-						<span class="QRCode3"></span>
-					</li>
-					<li class="contact4"><a href="javascript:;"></a></li>
-				</ul>
 			</div>
 		</div>
 	</div>
